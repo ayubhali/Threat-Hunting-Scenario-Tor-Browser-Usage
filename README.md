@@ -1,6 +1,3 @@
-Thanks for the correction. Here's the updated `README.md` with the correct TOR version: `tor-browser-windows-x86_64-portable-14.5.3.exe`.
-
-````markdown
 <img width="400" src="https://github.com/user-attachments/assets/44bac428-01bb-4fe9-9d85-96cba7698bee" alt="Tor Logo with the onion and a crosshair on it"/>
 
 # Threat Hunt Report: Unauthorized TOR Usage
@@ -40,7 +37,7 @@ DeviceFileEvents
 | where Timestamp >= datetime(2025-06-02T15:52:53.685265Z)  
 | order by Timestamp desc  
 | project Timestamp, DeviceName, ActionType, FileName, FolderPath, SHA256, Account = InitiatingProcessAccountName
-````
+```
 
 ![image](https://github.com/user-attachments/assets/1f658c82-dd56-49b2-afc1-9d0f9618fe73)
 
@@ -48,7 +45,7 @@ DeviceFileEvents
 
 ### 2. Searched the `DeviceProcessEvents` Table
 
-Searched for any `ProcessCommandLine` that contained the string "tor-browser-windows-x86\_64-portable-14.5.3.exe". Based on the logs returned, at `2025-06-02T15:54:47Z`, the user on the "melona-hunt" device ran the file from their Desktop folder using a command that triggered a silent installation.
+Searched for any `ProcessCommandLine` that contained the string "tor-browser-windows-x86_64-portable-14.5.3.exe". Based on the logs returned, at `2025-06-02T15:54:47Z`, the user on the "melona-hunt" device ran the file from their Desktop folder using a command that triggered a silent installation.
 
 **Query used to locate event:**
 
@@ -104,32 +101,32 @@ DeviceNetworkEvents
 
 ### 1. File Download - TOR Installer
 
-* **Timestamp:** `2025-06-02T15:52:53Z`
-* **Event:** The user "ayubcyberlab" downloaded a file named `tor-browser-windows-x86_64-portable-14.5.3.exe` to the Desktop folder.
-* **Action:** File download detected.
+* **Timestamp:** `2025-06-02T15:52:53Z`  
+* **Event:** The user "ayubcyberlab" downloaded a file named `tor-browser-windows-x86_64-portable-14.5.3.exe` to the Desktop folder.  
+* **Action:** File download detected.  
 * **File Path:** `C:\Users\ayubcyberlab\Desktop\tor-browser-windows-x86_64-portable-14.5.3.exe`
 
 ### 2. Process Execution - TOR Browser Installation
 
-* **Timestamp:** `2025-06-02T15:54:47Z`
-* **Event:** The user "ayubcyberlab" executed the installer in silent mode.
-* **Action:** Process creation detected.
-* **Command:** `tor-browser-windows-x86_64-portable-14.5.3.exe /S`
+* **Timestamp:** `2025-06-02T15:54:47Z`  
+* **Event:** The user "ayubcyberlab" executed the installer in silent mode.  
+* **Action:** Process creation detected.  
+* **Command:** `tor-browser-windows-x86_64-portable-14.5.3.exe /S`  
 * **File Path:** `C:\Users\ayubcyberlab\Desktop\tor-browser-windows-x86_64-portable-14.5.3.exe`
 
 ### 3. Process Execution - TOR Browser Launch
 
-* **Timestamp:** `2025-06-02T16:08:35Z`
-* **Event:** The TOR browser (`tor.exe`, `firefox.exe`) was launched by the user.
-* **Action:** Process execution.
+* **Timestamp:** `2025-06-02T16:08:35Z`  
+* **Event:** The TOR browser (`tor.exe`, `firefox.exe`) was launched by the user.  
+* **Action:** Process execution.  
 * **File Path:** `C:\Users\ayubcyberlab\Desktop\Tor Browser\Browser\TorBrowser\Tor\tor.exe`
 
 ### 4. Network Connection - TOR Network
 
-* **Timestamp:** `2025-06-02T16:08:52Z`
-* **Event:** A network connection to IP `148.251.151.125` on port `9001` by `tor.exe` was logged.
-* **Action:** Outbound connection success.
-* **Process:** `tor.exe`
+* **Timestamp:** `2025-06-02T16:08:52Z`  
+* **Event:** A network connection to IP `148.251.151.125` on port `9001` by `tor.exe` was logged.  
+* **Action:** Outbound connection success.  
+* **Process:** `tor.exe`  
 * **File Path:** `C:\Users\ayubcyberlab\Desktop\Tor Browser\Browser\TorBrowser\Tor\tor.exe`
 
 ---
